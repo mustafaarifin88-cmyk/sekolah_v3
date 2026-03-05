@@ -2,6 +2,7 @@
     .navbar-front {
         background-color: <?= isset($pengaturan['warna_header']) ? $pengaturan['warna_header'] : '#ffffff' ?> !important;
         transition: all 0.3s ease;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important; /* Tambahan bayangan batas header */
     }
     
     .navbar-nav .nav-link {
@@ -27,7 +28,7 @@
     }
 </style>
 
-<nav class="navbar navbar-expand-lg navbar-front fixed-top shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-front fixed-top">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center" href="<?= base_url('/') ?>">
             <?php if(isset($profil['logo']) && $profil['logo']): ?>
