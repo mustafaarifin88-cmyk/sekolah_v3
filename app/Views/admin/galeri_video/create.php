@@ -5,30 +5,37 @@
     <div class="col-lg-8">
         <div class="card border-0 shadow-sm rounded-4">
             <div class="card-header bg-white border-bottom pb-3 pt-4 d-flex justify-content-between align-items-center">
-                <h5 class="card-title mb-0 fw-bold"><i class="bi bi-plus-circle me-2 text-primary"></i> Upload Foto Galeri</h5>
-                <a href="<?= base_url('admin/galeri_foto') ?>" class="btn btn-outline-secondary rounded-pill btn-sm fw-semibold"><i class="bi bi-arrow-left me-1"></i> Kembali</a>
+                <h5 class="card-title mb-0 fw-bold"><i class="bi bi-plus-circle me-2 text-danger"></i> Tambah Video Galeri</h5>
+                <a href="<?= base_url('admin/galeri_video') ?>" class="btn btn-outline-secondary rounded-pill btn-sm fw-semibold"><i class="bi bi-arrow-left me-1"></i> Kembali</a>
             </div>
             <div class="card-body pt-4">
-                <form action="<?= base_url('admin/galeri_foto/store') ?>" method="post" enctype="multipart/form-data">
+                <form action="<?= base_url('admin/galeri_video/store') ?>" method="post" enctype="multipart/form-data">
                     <div class="form-group mb-3">
-                        <label class="form-label fw-semibold">Judul Foto / Caption <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" name="judul" required placeholder="Contoh: Kegiatan Upacara Bendera 17 Agustus">
+                        <label class="form-label fw-semibold">Judul Video <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" name="judul" required placeholder="Contoh: Dokumentasi Pentas Seni 2024">
                     </div>
                     
                     <div class="form-group mb-3">
-                        <label class="form-label fw-semibold">Upload Foto (JPG/PNG, Max 2MB) <span class="text-danger">*</span></label>
-                        <div class="position-relative">
-                            <input type="file" class="form-control form-control-lg" name="foto" accept="image/png, image/jpeg" required>
+                        <label class="form-label fw-semibold">Link YouTube <span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-danger text-white border-danger"><i class="bi bi-youtube"></i></span>
+                            <input type="url" class="form-control" name="link_youtube" required placeholder="https://www.youtube.com/watch?v=xxxx">
                         </div>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label class="form-label fw-semibold">Upload Thumbnail Video (JPG/PNG) <span class="text-danger">*</span></label>
+                        <input type="file" class="form-control" name="thumbnail" accept="image/png, image/jpeg" required>
+                        <small class="text-muted">Upload gambar yang akan dijadikan cover depan video di galeri.</small>
                     </div>
 
                     <div class="form-group mb-4">
                         <label class="form-label fw-semibold">Keterangan Tambahan (Opsional)</label>
-                        <textarea class="form-control" name="keterangan" rows="4" placeholder="Ceritakan momen singkat dari foto ini..."></textarea>
+                        <textarea class="form-control" name="keterangan" rows="4" placeholder="Ceritakan deskripsi singkat video ini..."></textarea>
                     </div>
                     
                     <div class="text-end border-top pt-4">
-                        <button type="submit" class="btn btn-primary px-5 py-2 rounded-pill fw-bold"><i class="bi bi-cloud-arrow-up-fill me-2"></i> Upload Foto</button>
+                        <button type="submit" class="btn btn-primary px-5 py-2 rounded-pill fw-bold"><i class="bi bi-cloud-arrow-up-fill me-2"></i> Simpan Video</button>
                     </div>
                 </form>
             </div>
