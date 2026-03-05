@@ -17,8 +17,14 @@ class Home extends BaseController
         $data = array_merge($this->globalData, [
             'title'    => 'Beranda',
             'slides'   => $slideModel->findAll(),
-            'prestasi' => $prestasiModel->orderBy('tgl_penerimaan', 'DESC')->findAll(6),
-            'program'  => $programModel->orderBy('id', 'DESC')->findAll(6)
+            'prestasi' => $prestasiModel->select('prestasi.*, kategori_prestasi.nama_kategori')
+                                        ->join('kategori_prestasi', 'kategori_prestasi.id = prestasi.kategori_id')
+                                        ->orderBy('tgl_penerimaan', 'DESC')
+                                        ->findAll(6),
+            'program'  => $programModel->select('program_unggulan.*, kategori_program.nama_kategori')
+                                        ->join('kategori_program', 'kategori_program.id = program_unggulan.kategori_id')
+                                        ->orderBy('program_unggulan.id', 'DESC')
+                                        ->findAll(6)
         ]);
 
         return view('frontend/home/index', $data);
