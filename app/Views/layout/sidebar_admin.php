@@ -44,11 +44,19 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item <?= current_url(true)->getSegment(2) == 'fasilitas' ? 'active' : '' ?>">
-                    <a href="<?= base_url('admin/fasilitas') ?>" class='sidebar-link'>
+                <li class="sidebar-item has-sub <?= in_array(current_url(true)->getSegment(2), ['fasilitas', 'kategori_fasilitas']) ? 'active' : '' ?>">
+                    <a href="#" class='sidebar-link'>
                         <i class="bi bi-house-door-fill"></i>
-                        <span>Data Fasilitas</span>
+                        <span>Fasilitas</span>
                     </a>
+                    <ul class="submenu <?= in_array(current_url(true)->getSegment(2), ['fasilitas', 'kategori_fasilitas']) ? 'active' : '' ?>">
+                        <li class="submenu-item <?= current_url(true)->getSegment(2) == 'fasilitas' ? 'active' : '' ?>">
+                            <a href="<?= base_url('admin/fasilitas') ?>">Data Fasilitas</a>
+                        </li>
+                        <li class="submenu-item <?= current_url(true)->getSegment(2) == 'kategori_fasilitas' ? 'active' : '' ?>">
+                            <a href="<?= base_url('admin/kategori_fasilitas') ?>">Kategori Fasilitas</a>
+                        </li>
+                    </ul>
                 </li>
                 
                 <li class="sidebar-item <?= current_url(true)->getSegment(2) == 'unduhan' ? 'active' : '' ?>">
@@ -67,40 +75,72 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item <?= current_url(true)->getSegment(2) == 'program' ? 'active' : '' ?>">
-                    <a href="<?= base_url('admin/program') ?>" class='sidebar-link'>
+                <li class="sidebar-item has-sub <?= in_array(current_url(true)->getSegment(2), ['program', 'kategori_program']) ? 'active' : '' ?>">
+                    <a href="#" class='sidebar-link'>
                         <i class="bi bi-award-fill"></i>
                         <span>Program Unggulan</span>
                     </a>
+                    <ul class="submenu <?= in_array(current_url(true)->getSegment(2), ['program', 'kategori_program']) ? 'active' : '' ?>">
+                        <li class="submenu-item <?= current_url(true)->getSegment(2) == 'program' ? 'active' : '' ?>">
+                            <a href="<?= base_url('admin/program') ?>">Data Program</a>
+                        </li>
+                        <li class="submenu-item <?= current_url(true)->getSegment(2) == 'kategori_program' ? 'active' : '' ?>">
+                            <a href="<?= base_url('admin/kategori_program') ?>">Kategori Program</a>
+                        </li>
+                    </ul>
                 </li>
 
-                <li class="sidebar-item <?= current_url(true)->getSegment(2) == 'ekstrakurikuler' ? 'active' : '' ?>">
-                    <a href="<?= base_url('admin/ekstrakurikuler') ?>" class='sidebar-link'>
+                <li class="sidebar-item has-sub <?= in_array(current_url(true)->getSegment(2), ['eskul', 'kategori_eskul']) ? 'active' : '' ?>">
+                    <a href="#" class='sidebar-link'>
                         <i class="bi bi-dribbble"></i>
                         <span>Ekstrakurikuler</span>
                     </a>
+                    <ul class="submenu <?= in_array(current_url(true)->getSegment(2), ['eskul', 'kategori_eskul']) ? 'active' : '' ?>">
+                        <li class="submenu-item <?= current_url(true)->getSegment(2) == 'eskul' ? 'active' : '' ?>">
+                            <a href="<?= base_url('admin/eskul') ?>">Data Eskul</a>
+                        </li>
+                        <li class="submenu-item <?= current_url(true)->getSegment(2) == 'kategori_eskul' ? 'active' : '' ?>">
+                            <a href="<?= base_url('admin/kategori_eskul') ?>">Kategori Eskul</a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="sidebar-title">Publikasi & Agenda</li>
 
-                <li class="sidebar-item <?= current_url(true)->getSegment(2) == 'berita' ? 'active' : '' ?>">
-                    <a href="<?= base_url('admin/berita') ?>" class='sidebar-link'>
+                <li class="sidebar-item has-sub <?= in_array(current_url(true)->getSegment(2), ['berita', 'kategori_berita']) ? 'active' : '' ?>">
+                    <a href="#" class='sidebar-link'>
                         <i class="bi bi-newspaper"></i>
                         <span>Berita Sekolah</span>
                     </a>
+                    <ul class="submenu <?= in_array(current_url(true)->getSegment(2), ['berita', 'kategori_berita']) ? 'active' : '' ?>">
+                        <li class="submenu-item <?= current_url(true)->getSegment(2) == 'berita' ? 'active' : '' ?>">
+                            <a href="<?= base_url('admin/berita') ?>">Data Berita</a>
+                        </li>
+                        <li class="submenu-item <?= current_url(true)->getSegment(2) == 'kategori_berita' ? 'active' : '' ?>">
+                            <a href="<?= base_url('admin/kategori_berita') ?>">Kategori Berita</a>
+                        </li>
+                    </ul>
                 </li>
 
-                <li class="sidebar-item <?= current_url(true)->getSegment(2) == 'pengumuman' ? 'active' : '' ?>">
-                    <a href="<?= base_url('admin/pengumuman') ?>" class='sidebar-link'>
+                <li class="sidebar-item has-sub <?= in_array(current_url(true)->getSegment(2), ['pengumuman', 'kategori_pengumuman']) ? 'active' : '' ?>">
+                    <a href="#" class='sidebar-link'>
                         <i class="bi bi-megaphone-fill"></i>
                         <span>Pengumuman</span>
                     </a>
+                    <ul class="submenu <?= in_array(current_url(true)->getSegment(2), ['pengumuman', 'kategori_pengumuman']) ? 'active' : '' ?>">
+                        <li class="submenu-item <?= current_url(true)->getSegment(2) == 'pengumuman' ? 'active' : '' ?>">
+                            <a href="<?= base_url('admin/pengumuman') ?>">Data Pengumuman</a>
+                        </li>
+                        <li class="submenu-item <?= current_url(true)->getSegment(2) == 'kategori_pengumuman' ? 'active' : '' ?>">
+                            <a href="<?= base_url('admin/kategori_pengumuman') ?>">Kategori Pengumuman</a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="sidebar-item has-sub <?= in_array(current_url(true)->getSegment(2), ['galeri_foto', 'galeri_video']) ? 'active' : '' ?>">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-images"></i>
-                        <span>Galeri</span>
+                        <span>Galeri Publikasi</span>
                     </a>
                     <ul class="submenu <?= in_array(current_url(true)->getSegment(2), ['galeri_foto', 'galeri_video']) ? 'active' : '' ?>">
                         <li class="submenu-item <?= current_url(true)->getSegment(2) == 'galeri_foto' ? 'active' : '' ?>">
@@ -112,18 +152,34 @@
                     </ul>
                 </li>
 
-                <li class="sidebar-item <?= current_url(true)->getSegment(2) == 'prestasi' ? 'active' : '' ?>">
-                    <a href="<?= base_url('admin/prestasi') ?>" class='sidebar-link'>
+                <li class="sidebar-item has-sub <?= in_array(current_url(true)->getSegment(2), ['prestasi', 'kategori_prestasi']) ? 'active' : '' ?>">
+                    <a href="#" class='sidebar-link'>
                         <i class="bi bi-trophy-fill"></i>
                         <span>Prestasi</span>
                     </a>
+                    <ul class="submenu <?= in_array(current_url(true)->getSegment(2), ['prestasi', 'kategori_prestasi']) ? 'active' : '' ?>">
+                        <li class="submenu-item <?= current_url(true)->getSegment(2) == 'prestasi' ? 'active' : '' ?>">
+                            <a href="<?= base_url('admin/prestasi') ?>">Data Prestasi</a>
+                        </li>
+                        <li class="submenu-item <?= current_url(true)->getSegment(2) == 'kategori_prestasi' ? 'active' : '' ?>">
+                            <a href="<?= base_url('admin/kategori_prestasi') ?>">Kategori Prestasi</a>
+                        </li>
+                    </ul>
                 </li>
 
-                <li class="sidebar-item <?= current_url(true)->getSegment(2) == 'agenda' ? 'active' : '' ?>">
-                    <a href="<?= base_url('admin/agenda') ?>" class='sidebar-link'>
+                <li class="sidebar-item has-sub <?= in_array(current_url(true)->getSegment(2), ['agenda', 'kategori_agenda']) ? 'active' : '' ?>">
+                    <a href="#" class='sidebar-link'>
                         <i class="bi bi-journal-check"></i>
                         <span>Agenda Kegiatan</span>
                     </a>
+                    <ul class="submenu <?= in_array(current_url(true)->getSegment(2), ['agenda', 'kategori_agenda']) ? 'active' : '' ?>">
+                        <li class="submenu-item <?= current_url(true)->getSegment(2) == 'agenda' ? 'active' : '' ?>">
+                            <a href="<?= base_url('admin/agenda') ?>">Data Agenda</a>
+                        </li>
+                        <li class="submenu-item <?= current_url(true)->getSegment(2) == 'kategori_agenda' ? 'active' : '' ?>">
+                            <a href="<?= base_url('admin/kategori_agenda') ?>">Kategori Agenda</a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="sidebar-title">Data Pengguna</li>
