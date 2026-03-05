@@ -31,18 +31,55 @@ class SlideShow extends BaseController
 
     public function store()
     {
-        if ($files = $this->request->getFiles()) {
-            foreach ($files['foto'] as $foto) {
-                if ($foto->isValid() && !$foto->hasMoved()) {
-                    $namaFoto = $foto->getRandomName();
-                    $foto->move('uploads/slideshow', $namaFoto);
-                    $this->slideModel->insert(['foto' => $namaFoto]);
-                }
-            }
-            return redirect()->to('/admin/slideshow')->with('success', 'Foto slide show berhasil diunggah.');
-        }
+        $foto = $this->request->getFile('foto');
         
-        return redirect()->back()->with('error', 'Silakan pilih foto terlebih dahulu.');
+        if ($foto && $foto->isValid() && !$foto->hasMoved()) {
+            $namaFoto = $foto->getRandomName();
+            $foto->move('uploads/slideshow', $namaFoto);
+            
+            $this->slideModel->insert([
+                'foto'       => $namaFoto,
+                'judul'      => $this->request->getPost('judul'),
+                'keterangan' => $this->request->getPost('keterangan')
+            ]);
+            
+            return redirect()->to('/admin/slideshow')->with('success', 'Slide show berhasil ditambahkan.');
+        }
+
+        return redirect()->back()->with('error', 'Gagal mengunggah foto.');
+    }
+
+    public function edit($id)
+    {
+        $data = [
+            'title' => 'Edit Slide Show',
+            'slide' => $this->slideModel->find($id)
+        ];
+        return view('admin/slideshow/edit', $data);
+    }
+
+    public function update($id)
+    {
+        $slide = $this->slideModel->find($id);
+        
+        $dataUpdate = [
+            'judul'      => $this->request->getPost('judul'),
+            'keterangan' => $this->request->getPost('keterangan')
+        ];
+
+        $foto = $this->request->getFile('foto');
+        if ($foto && $foto->isValid() && !$foto->hasMoved()) {
+            $namaFoto = $foto->getRandomName();
+            $foto->move('uploads/slideshow', $namaFoto);
+            $dataUpdate['foto'] = $namaFoto;
+            
+            if ($slide['foto'] && file_exists('uploads/slideshow/' . $slide['foto'])) {
+                unlink('uploads/slideshow/' . $slide['foto']);
+            }
+        }
+
+        $this->slideModel->update($id, $dataUpdate);
+        return redirect()->to('/admin/slideshow')->with('success', 'Data slide show berhasil diperbarui.');
     }
 
     public function delete($id)
