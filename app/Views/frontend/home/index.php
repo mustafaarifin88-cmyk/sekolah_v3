@@ -7,7 +7,19 @@
     <div class="carousel-inner">
         <?php foreach($slides as $key => $slide): ?>
             <div class="carousel-item <?= $key == 0 ? 'active' : '' ?>">
-                <img src="<?= base_url('uploads/slideshow/' . $slide['foto']) ?>" class="d-block w-100" style="height: 60vh; object-fit: cover;" alt="Slide">
+                <div class="position-relative">
+                    <img src="<?= base_url('uploads/slideshow/' . $slide['foto']) ?>" class="d-block w-100" style="height: 60vh; object-fit: cover; filter: brightness(0.7);" alt="Slide">
+                    <?php if(!empty($slide['judul']) || !empty($slide['keterangan'])): ?>
+                        <div class="carousel-caption d-none d-md-block" style="bottom: 20%; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">
+                            <?php if(!empty($slide['judul'])): ?>
+                                <h1 class="fw-bolder text-white mb-3 display-4"><?= $slide['judul'] ?></h1>
+                            <?php endif; ?>
+                            <?php if(!empty($slide['keterangan'])): ?>
+                                <p class="fs-4 text-white-50"><?= $slide['keterangan'] ?></p>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
             </div>
         <?php endforeach; ?>
     </div>
