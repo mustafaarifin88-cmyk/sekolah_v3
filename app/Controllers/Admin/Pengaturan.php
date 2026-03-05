@@ -17,7 +17,7 @@ class Pengaturan extends BaseController
     public function warna_bg()
     {
         $data = [
-            'title'      => 'Pengaturan Warna Background',
+            'title'      => 'Pengaturan Warna Tema',
             'pengaturan' => $this->pengaturanModel->first()
         ];
         return view('admin/pengaturan/warna_bg', $data);
@@ -27,8 +27,9 @@ class Pengaturan extends BaseController
     {
         $id = $this->request->getPost('id');
         $this->pengaturanModel->update($id, [
-            'warna_bg' => $this->request->getPost('warna_bg')
+            'warna_bg'     => $this->request->getPost('warna_bg'),
+            'warna_header' => $this->request->getPost('warna_header')
         ]);
-        return redirect()->to('/admin/pengaturan/warna_bg')->with('success', 'Warna background berhasil diperbarui.');
+        return redirect()->to('/admin/pengaturan/warna_bg')->with('success', 'Pengaturan warna berhasil diperbarui.');
     }
 }
