@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - <?= isset($profil['nama_sekolah']) ? $profil['nama_sekolah'] : 'Sistem Sekolah' ?></title>
+    
+    <?php if(isset($profil['logo']) && $profil['logo']): ?>
+        <link rel="shortcut icon" href="<?= base_url('uploads/logo/' . $profil['logo']) ?>" type="image/x-icon">
+        <link rel="icon" href="<?= base_url('uploads/logo/' . $profil['logo']) ?>" type="image/x-icon">
+    <?php endif; ?>
+
     <link rel="stylesheet" href="<?= base_url('assets/compiled/css/app.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/compiled/css/app-dark.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/compiled/css/auth.css') ?>">
