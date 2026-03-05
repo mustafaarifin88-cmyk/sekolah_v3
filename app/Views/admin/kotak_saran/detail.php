@@ -1,70 +1,40 @@
 <?= $this->extend('layout/backend_layout') ?>
 
 <?= $this->section('content') ?>
-<div class="card border-0 shadow-sm rounded-4">
-    <div class="card-header bg-white border-bottom pb-3 pt-4 d-flex justify-content-between align-items-center">
-        <h5 class="card-title mb-0 fw-bold"><i class="bi bi-plus-circle me-2 text-warning"></i> Tambah Data Prestasi</h5>
-        <a href="<?= base_url('admin/prestasi') ?>" class="btn btn-outline-secondary rounded-pill btn-sm fw-semibold"><i class="bi bi-arrow-left me-1"></i> Kembali</a>
-    </div>
-    <div class="card-body pt-4">
-        <form action="<?= base_url('admin/prestasi/store') ?>" method="post">
-            <div class="row g-4">
-                <div class="col-md-8">
-                    <div class="form-group mb-3">
-                        <label class="form-label fw-semibold">Judul Prestasi / Lomba <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control form-control-lg" name="judul" required placeholder="Contoh: Juara 1 Olimpiade Sains Nasional">
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card border-0 shadow-sm rounded-4 position-relative overflow-hidden">
+            <div class="position-absolute top-0 start-0 w-100 bg-primary" style="height: 5px;"></div>
+            <div class="card-header bg-white border-bottom pb-3 pt-4 d-flex justify-content-between align-items-center">
+                <h5 class="card-title mb-0 fw-bold"><i class="bi bi-envelope-open-fill me-2 text-primary"></i> Detail Kotak Saran</h5>
+                <a href="<?= base_url('admin/kotak_saran') ?>" class="btn btn-outline-secondary rounded-pill btn-sm fw-semibold"><i class="bi bi-arrow-left me-1"></i> Kembali</a>
+            </div>
+            <div class="card-body p-4 p-lg-5">
+                <div class="d-flex align-items-center mb-4 pb-4 border-bottom">
+                    <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center me-4" style="width: 60px; height: 60px;">
+                        <i class="bi bi-person-fill fs-2"></i>
                     </div>
-
-                    <div class="row g-3 mb-3">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="form-label fw-semibold">Nama Penerima <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="nama_penerima" required placeholder="Contoh: Ahmad Rizki">
-                            </div>
+                    <div>
+                        <h4 class="fw-bold mb-1"><?= $saran['nama'] ?></h4>
+                        <div class="d-flex align-items-center text-muted small">
+                            <span class="me-3"><i class="bi bi-envelope me-1"></i> <?= !empty($saran['email']) ? $saran['email'] : 'Tidak ada email' ?></span>
+                            <span><i class="bi bi-clock-history me-1"></i> <?= date('d M Y - H:i', strtotime($saran['created_at'])) ?> WIB</span>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="form-label fw-semibold">Hadiah / Peringkat <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="hadiah" required placeholder="Contoh: Medali Emas / Juara 1">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group mb-4">
-                        <label class="form-label fw-semibold">Keterangan Lengkap / Deskripsi (Opsional)</label>
-                        <textarea class="form-control summernote" name="keterangan"></textarea>
                     </div>
                 </div>
 
-                <div class="col-md-4">
-                    <div class="card bg-light border-0 shadow-none rounded-4 mb-3">
-                        <div class="card-body p-4">
-                            <div class="form-group mb-3">
-                                <label class="form-label fw-semibold">Kategori Prestasi <span class="text-danger">*</span></label>
-                                <select class="form-select" name="kategori_id" required>
-                                    <option value="">-- Pilih Kategori --</option>
-                                    <?php foreach($kategori as $kat): ?>
-                                        <option value="<?= $kat['id'] ?>"><?= $kat['nama_kategori'] ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-
-                            <div class="form-group mb-3">
-                                <label class="form-label fw-semibold">Instansi Penyelenggara <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="penyelenggara" required placeholder="Contoh: Kemendikbud">
-                            </div>
-
-                            <div class="form-group mb-0">
-                                <label class="form-label fw-semibold">Tanggal Penerimaan <span class="text-danger">*</span></label>
-                                <input type="date" class="form-control" name="tgl_penerimaan" required>
-                            </div>
-                        </div>
+                <div class="mb-5">
+                    <h6 class="fw-bold text-dark text-uppercase mb-3">Isi Pesan / Saran :</h6>
+                    <div class="bg-light rounded-4 p-4 text-dark fs-5" style="line-height: 1.8;">
+                        <?= nl2br(htmlspecialchars($saran['pesan'])) ?>
                     </div>
+                </div>
 
-                    <button type="submit" class="btn btn-primary w-100 py-3 rounded-pill fw-bold shadow-sm mt-2"><i class="bi bi-save me-2"></i> Simpan Data Prestasi</button>
+                <div class="text-end">
+                    <a href="<?= base_url('admin/kotak_saran/delete/' . $saran['id']) ?>" class="btn btn-danger px-4 rounded-pill fw-bold" onclick="return confirm('Yakin ingin menghapus pesan ini?');"><i class="bi bi-trash me-2"></i> Hapus Pesan Ini</a>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
 </div>
 <?= $this->endSection() ?>
