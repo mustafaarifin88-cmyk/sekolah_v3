@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 05, 2026 at 06:45 PM
+-- Generation Time: Mar 05, 2026 at 07:59 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -251,6 +251,13 @@ CREATE TABLE `kelas` (
   `nama_kelas` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `kelas`
+--
+
+INSERT INTO `kelas` (`id`, `nama_kelas`) VALUES
+(1, 'X IPA 1');
+
 -- --------------------------------------------------------
 
 --
@@ -278,6 +285,13 @@ CREATE TABLE `menu_eksternal` (
   `created_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `menu_eksternal`
+--
+
+INSERT INTO `menu_eksternal` (`id`, `judul`, `url`, `created_at`) VALUES
+(1, 'E-Absensi', 'https://absen.digitalolshop.com', '2026-03-06 01:05:44');
+
 -- --------------------------------------------------------
 
 --
@@ -286,15 +300,16 @@ CREATE TABLE `menu_eksternal` (
 
 CREATE TABLE `pengaturan` (
   `id` int(11) NOT NULL,
-  `warna_bg` varchar(20) NOT NULL DEFAULT '#ffffff'
+  `warna_bg` varchar(20) NOT NULL DEFAULT '#ffffff',
+  `warna_header` varchar(20) NOT NULL DEFAULT '#ffffff'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `pengaturan`
 --
 
-INSERT INTO `pengaturan` (`id`, `warna_bg`) VALUES
-(1, '#ffffff');
+INSERT INTO `pengaturan` (`id`, `warna_bg`, `warna_header`) VALUES
+(1, '#ffffff', '#e0e0e0');
 
 -- --------------------------------------------------------
 
@@ -443,9 +458,9 @@ CREATE TABLE `slide_show` (
 --
 
 INSERT INTO `slide_show` (`id`, `foto`, `judul`, `keterangan`, `created_at`) VALUES
-(1, '1772727613_4f4a14efcac645e9e8e6.jpg', NULL, NULL, '2026-03-05 23:20:13'),
-(2, '1772727637_405a6f27925e6f717b99.jpeg', NULL, NULL, '2026-03-05 23:20:37'),
-(3, '1772727652_626c0d7e56893872c645.jpg', NULL, NULL, '2026-03-05 23:20:52');
+(1, '1772727613_4f4a14efcac645e9e8e6.jpg', 'SMKN 1 SUKA MAJU', 'Sekolah Kejuaruan Ternama di Indonesia', '2026-03-05 23:20:13'),
+(2, '1772727637_405a6f27925e6f717b99.jpeg', 'GURU DAN SISWA PRESTASI', 'Kembangkan Kemampuan Anak Kita di Sini', '2026-03-05 23:20:37'),
+(3, '1772727652_626c0d7e56893872c645.jpg', 'GURU BERPENGALAMAN', 'Memiliki Banyak Guru Yang Sangat Berpengalaman di Bidangnya', '2026-03-05 23:20:52');
 
 -- --------------------------------------------------------
 
@@ -485,7 +500,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role`, `username`, `password`, `nama_lengkap`, `foto_profil`, `jabatan`, `kelas_id`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin', '$2y$10$2m9Qga7m9H27htL7DGxNYOIggz7QARPMS99I.6hPwFbQAdd.ol74K', 'Administrator', NULL, NULL, NULL, NULL, NULL);
+(1, 'admin', 'admin', '$2y$10$57qSO2MRSClHSBp5.EDyTepRDkkgNiAHUKmUq5YnLeDVTjYd0g4AS', 'Administrator', '1772735674_5c1431b6a66466b681eb.png', NULL, NULL, NULL, '2026-03-06 01:34:34'),
+(2, 'guru', 'guru', '$2y$10$fHaHGd7fBMHnqgF8wArUzuPEByUb5rz4iDHTR6hHFsM5qaoNWnaQC', 'Mustafa Arifin, A.Md.T', '1772735595_3d7816b889f4472892f5.png', 'Guru Kelas', 1, '2026-03-06 01:32:27', '2026-03-06 01:33:15');
 
 --
 -- Indexes for dumped tables
@@ -756,7 +772,7 @@ ALTER TABLE `kategori_program`
 -- AUTO_INCREMENT for table `kelas`
 --
 ALTER TABLE `kelas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `kotak_saran`
@@ -768,7 +784,7 @@ ALTER TABLE `kotak_saran`
 -- AUTO_INCREMENT for table `menu_eksternal`
 --
 ALTER TABLE `menu_eksternal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pengaturan`
@@ -828,7 +844,7 @@ ALTER TABLE `struktur_organisasi`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
