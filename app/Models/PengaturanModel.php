@@ -12,7 +12,7 @@ class PengaturanModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['warna_bg'];
+    protected $allowedFields    = ['warna_bg', 'warna_header'];
 
     protected bool $allowEmptyInserts = false;
     protected $useTimestamps = false;
