@@ -12,7 +12,7 @@ class SlideShowModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['foto'];
+    protected $allowedFields    = ['foto', 'judul', 'keterangan'];
 
     protected bool $allowEmptyInserts = false;
 
