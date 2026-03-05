@@ -47,9 +47,13 @@
                         <li>
                             <h6 class="dropdown-header">Halo, <?= explode(' ', session()->get('nama_lengkap'))[0] ?>!</h6>
                         </li>
+                        
                         <?php if(session()->get('role') == 'guru'): ?>
                             <li><a class="dropdown-item" href="<?= base_url('guru/profil/edit') ?>"><i class="icon-mid bi bi-person me-2"></i> Profil Saya</a></li>
+                        <?php elseif(session()->get('role') == 'admin'): ?>
+                            <li><a class="dropdown-item" href="<?= base_url('admin/user_admin/edit/' . session()->get('id')) ?>"><i class="icon-mid bi bi-person me-2"></i> Profil Saya</a></li>
                         <?php endif; ?>
+                        
                         <li>
                             <hr class="dropdown-divider">
                         </li>
