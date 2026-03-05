@@ -1,38 +1,70 @@
 <?= $this->extend('layout/backend_layout') ?>
 
 <?= $this->section('content') ?>
-<div class="row justify-content-center">
-    <div class="col-lg-8">
-        <div class="card border-0 shadow-sm rounded-4">
-            <div class="card-header bg-white border-bottom pb-3 pt-4 d-flex justify-content-between align-items-center">
-                <h5 class="card-title mb-0 fw-bold"><i class="bi bi-plus-circle me-2 text-primary"></i> Upload Foto Galeri</h5>
-                <a href="<?= base_url('admin/galeri_foto') ?>" class="btn btn-outline-secondary rounded-pill btn-sm fw-semibold"><i class="bi bi-arrow-left me-1"></i> Kembali</a>
-            </div>
-            <div class="card-body pt-4">
-                <form action="<?= base_url('admin/galeri_foto/store') ?>" method="post" enctype="multipart/form-data">
+<div class="card border-0 shadow-sm rounded-4">
+    <div class="card-header bg-white border-bottom pb-3 pt-4 d-flex justify-content-between align-items-center">
+        <h5 class="card-title mb-0 fw-bold"><i class="bi bi-plus-circle me-2 text-warning"></i> Tambah Data Prestasi</h5>
+        <a href="<?= base_url('admin/prestasi') ?>" class="btn btn-outline-secondary rounded-pill btn-sm fw-semibold"><i class="bi bi-arrow-left me-1"></i> Kembali</a>
+    </div>
+    <div class="card-body pt-4">
+        <form action="<?= base_url('admin/prestasi/store') ?>" method="post">
+            <div class="row g-4">
+                <div class="col-md-8">
                     <div class="form-group mb-3">
-                        <label class="form-label fw-semibold">Judul Foto / Caption <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" name="judul" required placeholder="Contoh: Kegiatan Upacara Bendera 17 Agustus">
+                        <label class="form-label fw-semibold">Judul Prestasi / Lomba <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control form-control-lg" name="judul" required placeholder="Contoh: Juara 1 Olimpiade Sains Nasional">
                     </div>
-                    
-                    <div class="form-group mb-3">
-                        <label class="form-label fw-semibold">Upload Foto (JPG/PNG, Max 2MB) <span class="text-danger">*</span></label>
-                        <div class="position-relative">
-                            <input type="file" class="form-control form-control-lg" name="foto" accept="image/png, image/jpeg" required>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label fw-semibold">Nama Penerima <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="nama_penerima" required placeholder="Contoh: Ahmad Rizki">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label fw-semibold">Hadiah / Peringkat <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="hadiah" required placeholder="Contoh: Medali Emas / Juara 1">
+                            </div>
                         </div>
                     </div>
 
                     <div class="form-group mb-4">
-                        <label class="form-label fw-semibold">Keterangan Tambahan (Opsional)</label>
-                        <textarea class="form-control" name="keterangan" rows="4" placeholder="Ceritakan momen singkat dari foto ini..."></textarea>
+                        <label class="form-label fw-semibold">Keterangan Lengkap / Deskripsi (Opsional)</label>
+                        <textarea class="form-control summernote" name="keterangan"></textarea>
                     </div>
-                    
-                    <div class="text-end border-top pt-4">
-                        <button type="submit" class="btn btn-primary px-5 py-2 rounded-pill fw-bold"><i class="bi bi-cloud-arrow-up-fill me-2"></i> Upload Foto</button>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card bg-light border-0 shadow-none rounded-4 mb-3">
+                        <div class="card-body p-4">
+                            <div class="form-group mb-3">
+                                <label class="form-label fw-semibold">Kategori Prestasi <span class="text-danger">*</span></label>
+                                <select class="form-select" name="kategori_id" required>
+                                    <option value="">-- Pilih Kategori --</option>
+                                    <?php foreach($kategori as $kat): ?>
+                                        <option value="<?= $kat['id'] ?>"><?= $kat['nama_kategori'] ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label class="form-label fw-semibold">Instansi Penyelenggara <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="penyelenggara" required placeholder="Contoh: Kemendikbud">
+                            </div>
+
+                            <div class="form-group mb-0">
+                                <label class="form-label fw-semibold">Tanggal Penerimaan <span class="text-danger">*</span></label>
+                                <input type="date" class="form-control" name="tgl_penerimaan" required>
+                            </div>
+                        </div>
                     </div>
-                </form>
+
+                    <button type="submit" class="btn btn-primary w-100 py-3 rounded-pill fw-bold shadow-sm mt-2"><i class="bi bi-save me-2"></i> Simpan Data Prestasi</button>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 <?= $this->endSection() ?>
