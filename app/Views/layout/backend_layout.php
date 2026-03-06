@@ -81,16 +81,28 @@
         $(document).ready(function() {
             $('.datatable').DataTable();
             $('.summernote').summernote({
-                height: 250,
+                height: 300, // Sedikit ditinggikan agar lebih nyaman
                 toolbar: [
                     ['style', ['style']],
-                    ['font', ['bold', 'underline', 'clear']],
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
                     ['color', ['color']],
                     ['para', ['ul', 'ol', 'paragraph']],
                     ['table', ['table']],
-                    ['insert', ['link']],
+                    // Menambahkan 'picture' dan 'video' ke dalam grup 'insert'
+                    ['insert', ['link', 'picture', 'video']], 
                     ['view', ['fullscreen', 'codeview', 'help']]
-                ]
+                ],
+                // Tambahan opsional: Mengatur pesan placeholder saat editor kosong
+                placeholder: 'Ketikkan isi konten di sini...',
+                // Pastikan gambar yang diupload otomatis diresize jika terlalu besar (opsional tapi disarankan)
+                callbacks: {
+                    onImageUpload: function(files) {
+                        // Jika Anda ingin membuat fitur upload gambar langsung ke server, 
+                        // Anda harus menambahkan AJAX handler di sini. 
+                        // Namun secara default, Summernote akan mengubah gambar menjadi base64 text.
+                    }
+                }
             });
         });
     </script>
